@@ -147,16 +147,6 @@ _ZStL19piecewise_construct:
 
 - C++的基础学习
 
-  C++ 包含了两种I/O库，一种是基于流的库，另一种是C风格的I/O函数集合。
-
-  **Stream-base I/O**
-
-  这个库主要是围绕抽象I/O设备来实现的，可以使用相同的代码实现对内存，文件，以及自定义适配器设备的输入输出。
-
-  这里所定义的很多类都是基于模块化的。
-
-  
-
   输出运算符`<<`以及输入运算符`>>`
 
   ```c++
@@ -173,14 +163,66 @@ _ZStL19piecewise_construct:
 
   ​	Extend :  I/O buffer , 用于良好的输入输出。如果不设置一个缓冲区的话，用户输入输出直接操作与程序。体验不是很理想，所以当用户想要删除或者修改时，并不经过程序，而是修改的是缓冲区内的内容。 
 
-  **输入缓冲区常见的问题：**
+  - **I/O库基础**
 
-  ​	当我们在输入一个变量之后紧接着输入字符类型或者字符串类型。我们可能会遇到缓冲区问题。
+    C++ 包含了两种I/O库，一种是基于流的库，另一种是C风格的I/O函数集合。
 
-  ```c++
-  
-  ```
+  **Stream-base I/O**
 
-  
+  这个库主要是围绕抽象I/O设备来实现的，可以使用相同的代码实现对内存，文件，以及自定义适配器设备的输入输出。
+
+  这里所定义的很多类都是基于模块化的。
+
+  ​	由于这里涉及到了很多类的继承，以及模块部分的内容。所以绝大多数内容，在以后的学习过程中深入研究，在这里只是片面的理解一部分内容。
+
+  - - **设置输出字符格式**
+
+      **fmtflags 类型的常量有：**
+
+    | constan         | Explanation                                                  |
+    | --------------- | ------------------------------------------------------------ |
+    | **dec**         | use decimal base for integer I/O: see [std::dec](https://en.cppreference.com/w/cpp/io/manip/hex) |
+    | **oct**         | use octal base for integer I/O: see [std::oct](https://en.cppreference.com/w/cpp/io/manip/hex) |
+    | **hex**         | use hexadecimal base for integer I/O: see [std::hex](https://en.cppreference.com/w/cpp/io/manip/hex) |
+    | **basefield**   | dec\|oct\|hex. Useful for masking operations                 |
+    | **left**        | left adjustment (adds fill characters to the right): see [std::left](https://en.cppreference.com/w/cpp/io/manip/left) |
+    | **right**       | right adjustment (adds fill characters to the left): see [std::right](https://en.cppreference.com/w/cpp/io/manip/left) |
+    | **internal**    | internal adjustment (adds fill characters to the internal designated point): see [std::internal](https://en.cppreference.com/w/cpp/io/manip/left) |
+    | **adjustfield** | left\|right\|internal. Useful for masking operations         |
+    | **scientific**  | generate floating point types using scientific notation, or hex notation if combined with fixed: see [std::scientific](https://en.cppreference.com/w/cpp/io/manip/fixed) |
+    | **fixed**       | generate floating point types using fixed notation, or hex notation if combined with scientific: see [std::fixed](https://en.cppreference.com/w/cpp/io/manip/fixed) |
+    | **floatfield**  | scientific\|fixed. Useful for masking operations             |
+    | **boolalpha**   | insert and extract bool type in alphanumeric format: see [std::boolalpha](https://en.cppreference.com/w/cpp/io/manip/boolalpha) |
+    | **showbase**    | generate a prefix indicating the numeric base for integer output, require the currency indicator in monetary I/O: see [std::showbase](https://en.cppreference.com/w/cpp/io/manip/showbase) |
+    | **showpoint**   | generate a decimal-point character unconditionally for floating-point number output: see [std::showpoint](https://en.cppreference.com/w/cpp/io/manip/showpoint) |
+    | **showpos**     | generate a + character for non-negative numeric output: see [std::showpos](https://en.cppreference.com/w/cpp/io/manip/showpos) |
+    | **skipws**      | skip leading whitespace before certain input operations: see [std::skipws](https://en.cppreference.com/w/cpp/io/manip/skipws) |
+    | **unitbuf**     | flush the output after each output operation: see [std::unitbuf](https://en.cppreference.com/w/cpp/io/manip/unitbuf) |
+    | **uppercase**   | replace certain lowercase letters with their uppercase equivalents in certain output operations: see [std::uppercase](https://en.cppreference.com/w/cpp/io/manip/uppercase) |
+    |                 |                                                              |
+
+    在对输入输出有相应的要求的话可以使用一下方法：
+
+    ```c++
+    //头文件
+    #include<ios> 
+    #include<iomanip>  //调用setw 设置输出长度，不足是补充空格
+    
+    //8进制输出
+    
+    cout.setf(std::ios_base::oct, std::ios_base::basefield); //设置格式
+    cout.setf(std::ios_base::showbase); //显示前缀 例如 O12 
+    cout << 100 << endl; // output  0144
+    //------
+    cout.unsetf(std::ios_base::oct); //撤销之前设置的格式
+    // 另一种方式
+    cout << std::oct << num << endl; // output 0144
+    
+    //左对齐
+    cout.setf(std::ios_base::left);
+    cout << setw(20) << "Drafox" << endl; // output :$      Drafox
+    ```
 
   ​	
+
+  
