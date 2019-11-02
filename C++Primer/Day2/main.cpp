@@ -1,11 +1,14 @@
 #include<iostream>
 
 using namespace std;
+void TestInputC();
 int main()
 {
  	unsigned  a = 198;
 	int b = -72;
 	
+	TestInputC();
+
 
 	cout << (unsigned)b + a  << endl;
 
@@ -28,4 +31,17 @@ int main()
 	cout << b+b << endl;
 
 	return 0;
+}
+
+void TestInputC()
+{
+	//char ch;
+	wchar_t ch;
+
+	cin >> ch ; 
+
+	cout << ch << endl;
+
+
+
 }
