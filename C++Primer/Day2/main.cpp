@@ -1,4 +1,5 @@
 #include<iostream>
+#include<locale>
 
 using namespace std;
 void TestInputC();
@@ -36,11 +37,10 @@ int main()
 void TestInputC()
 {
 	//char ch;
-	wchar_t ch;
-
-	cin >> ch ; 
-
-	cout << ch << endl;
+	locale loc("chs");
+	wcout.imbue(loc);
+	wchar_t ch[]=L"中文";
+	wcout << ch << endl;
 
 
 
