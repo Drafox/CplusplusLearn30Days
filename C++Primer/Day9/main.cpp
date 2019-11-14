@@ -29,5 +29,25 @@ int main()
 
 	object1.move_x(101).move_y(103).printPositon();
 
+
+	
+
 	return 0;
+}
+
+
+
+void Test()
+{
+
+	for(int i = 0; i < 10; ++i)
+	{
+		m = 10;
+		int m;
+		m += i;
+	
+	}
+
+
+
 }

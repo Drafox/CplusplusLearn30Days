@@ -120,7 +120,7 @@ struct Person{
   
   ```
 
-  ​	程序会报错：‘Status Person::StatusFlag’ is private within this context            
+  程序会报错：‘Status Person::StatusFlag’ is private within this context
 
   #### 可变数据成员
 
@@ -146,7 +146,7 @@ struct Person{
 
   **只有以上两种初始化方式**
 
-    #### return *this
+  #### return *this
 
   ​	首先理解为什么要用到`return *this`:
 
@@ -200,4 +200,57 @@ struct Person{
   //x: 100	y: 100
   ```
 
-  3333
+  ### 类的作用域
+
+  ​	在类中，没有变量作用域覆盖，简言之，类中函数不能重复定义类中数据成员。
+
+  ```c++
+  class Person{
+    	
+      double price;
+      
+      int Transfer()
+      {
+          double price; // error
+          //we can use `price` variable directly 
+      }
+  };
+  ```
+
+  ​	类函数成员参数会隐藏外层成员变量，如果出现此现象可以通过`namespace：：variable`来进行访问我们想要访问的变量。
+
+  #### 探索编译器如何找变量（名字，此处：函数名也算做变量名）
+
+  - 从内到外：首先分析块语句中变量的查找顺序。
+
+  ```c++
+  int max = 100;
+  for(int i = 0; i < 10 ; ++i )
+  {
+      max += i; 
+  }
+  ```
+
+  ​	编译器首先查找内部变量，如果没有则通过查找外部变量（函数内部），如果函数内部也没有变量的定义，继续向外，全局变量若没有，编译器报错。
+
+  测试：
+
+  ```c++
+  for(int i = 0; i < 10 ; ++i)
+  {
+      m = 100; //error: ‘m’ was not declared in this scope 
+      int m;
+  }
+  ```
+
+  ​	可以这样理解，在块语句内部，编译器顺序查找变量，而不是先查找玩所有变量之后，再处理使用变量的语句。
+
+  ​	其实对于函数来说也是如此，但对于类来说就不一样了。
+
+  ​	在类中，编译器将所有变量"可视"之后，在执行处理语句。
+
+  ####  成员初始化列表尽可能与成员声明顺序保持一致，以及尽量避免用成员数据初始化另一个成员，可以避免很多问题。
+
+  
+
+  
