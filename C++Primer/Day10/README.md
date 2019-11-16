@@ -76,7 +76,56 @@
     //iotest.cpp
     ```
 
-    ​	在Linux下，我把文件权限修改之后，open是无法打开的，所以检查是否打开是很有必要的。
+    对于ofstream类型打开文件时，如果文件不存在则创建并打开，如果存在则打开。
+
+    对于ifstream类型打开文件时，如果文件不存在返回flase;
+
+    如果想重新定为可以使用seekg函数。
+
+    ```c++
+    #include<fstream>
+    #include<iostream>
+    #include<string>
+    #include<limits.h>
+    
+    using namespace std;
+    class FileClass{
+        public:
+      bool MyOpenF(string pathname,string filename,ios_base::openmode flag = ios_base::app) const {
+            string t = (pathname + "/" + filename);
+            const char *name = t.c_str();
+            ofstream outfile(name,flag);
+          	if(!outfile)
+            {
+                cerr << "Error: failed to open file" << endl;
+                return false;
+            }
+          	cout << "opened!" << endl;
+          return true;
+        }
+        private:
+        string pathName;
+        string fileName;
+    };
+    
+    int main()
+    {
+        string name1(254,'h');
+        string name2(13,'h');
+        FileClass obj;
+        if(MAX_NAME < 15)
+        {
+            obj.MyopenF(".", name2);
+        }
+        else
+        {
+            obj.MyopenF(".",name1);
+        }
+        
+    }
+    ```
+
+    在Linux下，我把文件权限修改之后，open是无法打开的，所以检查是否打开是很有必要的。
 
 
 
