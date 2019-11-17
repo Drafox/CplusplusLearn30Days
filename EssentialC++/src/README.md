@@ -92,9 +92,7 @@ bool FibonacciGame(int position, int &element)
 
 - which is the  simplest sorting algorithm that works by  repeatedly swapping the adjacent element if they are in wrong order. 
 
-  ![](<https://github.com/Drafox/C-Learn30Days/blob/master/EssentialC%2B%2B/img/bubble%20_sort.jpg>
-
-  )
+  ![](<https://github.com/Drafox/C-Learn30Days/blob/master/EssentialC%2B%2B/img/bubble%20_sort.jpg>)
 
 - 我们分析上面的图，然后设计程序
 
