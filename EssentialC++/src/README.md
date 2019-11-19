@@ -6,8 +6,6 @@
 
 ​	看C++Primer有一段时间了，对于那本巨作啃完它还是需要些时间，为了有效的读懂那本书，总结了之前8章学习的经验，慎重考虑了一下，还是先看一本简小的书，对C++整体有一个认识。那么Essential C++无疑是最佳的选择了。
 
-​	计划：三天时间刷完整本书。
-
 **0x01 从书本前言中获取的信息**
 
 ​	这本书简略了很多东西，但是把跟多内容都浓缩了，舍弃掉了一些未涉及的东西，以及了解S.B.L一些创作。
@@ -30,39 +28,144 @@
 
 - **point 4**
 
-  
+  将参数声明为`reference`
+
+  ​	理由1：希望得以直接对传入的对象进行修改。
+
+  ​	理由2：降低复制大型对象的额外负担。
 
 - **point 5**
 
+  指针可能会没有指向任何对象，但是引用必须指向对象。所以使用指针传递对象时，需要判断：
+
+  `if(pointer == nullptr)`
+
 - **point 6**
+
+  定义在`file scope` 内的变量会被编译器初始化，但是定义在局部内的变量用户需要自己初始化，否则该变量的值是为定义的。
 
 - **point 7**
 
+  `form: int *p = new int; int *ptr = new int(2948);`
+
 - **point 8**
+
+  C++没有提供任何语法让我们从heap分配数组的同时初始值。
 
 - **point 9**
 
+  如果为某个参数提供默认值，那么其右侧所有变量都必须提供默认值，否则行为是非法的。
+
 - **point 10**
+
+  定义默认值的地方只允许是一处，要么是声明部分，要么是定义部分。最好是在声明部分，用户可见性高。
 
 - **point 11**
 
+  `inline function`常常被定义到头文件中。
+
 - **point 12**
+
+  ```c++
+  form : 
+  template<typename A, B ,C D>
+  void printm(A ,B ,C, D); //declaration
+  
+  //definition
+  template<typename A, B, C, D>
+  void printm(A a, B b, C b, Dd)
+  {
+      cout << "1 : " << a << "\t2: " <<b << "\t3 : " << c << "\t 4: " <<d << endl;
+  }
+  ```
+
+  
 
 - **point 13**
 
+  ​	函数传递数组时会转变成指针，所以难免有些操作不能实现，比如：`auto beg = begin(arr);`
+
+  因为传入的参数arr被转换成指针，而`begin`的参数类型为数组类型。
+
+  可以使用数组引用类型解决这一问题`const int (&a)[10];`
+
 - **point 14**
+
+  所有容器的共同操作：
+
+  ​	
 
 - **point 15**
 
+  `list `并不支持`iterator`偏移运算:no match for ‘operator+’ (operand types are ‘std::_List_iterator<int>’ and ‘int’)	
+
 - **point 16**
+
+  `max_element`  Essential C++ :max_element() is passed an iterator pair marking the range of elements to traverse. It returns the largest element within the vector. 
+
+  但是实际上是返回的该最大元素的迭代器。
 
 - **point 17**
 
+  `algorithm` 库中的函数的迭代器范围都是`[first, last)`
+
 - **point 18**
+
+  `STL（Standard Template Library）`有两种组件构成：容器、操作这些容器的`generic algorithm`
 
 - **point 19**
 
+  泛型算法通过`function template`,达到与操作对象的类型相互独立，实现与容器无关的技术，则是通过迭代器，进行操作。
+
 - **point 20**
+
+  `iterator(generic pointer) Iterators are used to point at the memory addresses of STL containers. `
+
+  Operation: assign, compare , increment, dereference.
+
+- **point 21**
+
+  对于不同容器有着不同的操作，所以`iterator`也有不同的类型，比如： [LegacyInputIterator](https://en.cppreference.com/w/cpp/named_req/InputIterator), [LegacyOutputIterator](https://en.cppreference.com/w/cpp/named_req/OutputIterator), [LegacyForwardIterator](https://en.cppreference.com/w/cpp/named_req/ForwardIterator), [LegacyBidirectionalIterator](https://en.cppreference.com/w/cpp/named_req/BidirectionalIterator), [LegacyRandomAccessIterator](https://en.cppreference.com/w/cpp/named_req/RandomAccessIterator), and [LegacyContiguousIterator](https://en.cppreference.com/w/cpp/named_req/ContiguousIterator) ［from cppreference.com］
+
+- **point 22**
+
+  `erase return the iterator which points the position after the deleted element`
+
+- **point 23**
+
+- **point 24**
+
+- **point 25**
+
+- **point 26**
+
+- **point 27**
+
+- **point 28**
+
+- **point 29**
+
+- **point 30**
+
+- **point 31**
+
+- **point 32**
+
+- **point 33**
+
+- **point 34**
+
+- **point 35**
+
+- **point 36**
+
+- **point 37**
+
+- **point 38**
+
+- **point 39**
+
+- **point 40**
 
 ##### 动手练习
 
@@ -92,9 +195,7 @@ bool FibonacciGame(int position, int &element)
 
 - which is the  simplest sorting algorithm that works by  repeatedly swapping the adjacent element if they are in wrong order. 
 
-  ![](<https://github.com/Drafox/C-Learn30Days/blob/master/EssentialC%2B%2B/img/bubble%20_sort.jpg>
-
-  )
+  ![]()
 
 - 我们分析上面的图，然后设计程序
 
