@@ -133,19 +133,35 @@
 
 - **point 23**
 
+  `destructor并不是绝对需要的。`
+
 - **point 24**
+
+  `mutable` 不会破坏`const object`的常量性质。
 
 - **point 25**
 
+  静态类成员，不允许定义在类内部，可以在类的外部进行定义，通过范围解析运算符。
+
 - **point 26**
+
+  静态类成员，相同类的实体共享该成员。
 
 - **point 27**
 
+  静态成员函数与普通成员函数的区别是：静态函数没有`this`指针，只能访问静态成员数据及静态成员函数。
+
 - **point 28**
+
+  静态成员函数可以在对象实体创建之前通过范围解析运算符进行访问。
 
 - **point 29**
 
+  运算符重载规则：不可以引入新的运算符。而且`. .* :: ?:`四个运算符不允许重载。运算优先级以及运算符的操作对象数量不可变。
+
 - **point 30**
+
+  `OOP：（Object-Oriented Programming）面向对象编程，万事皆对象。 `
 
 - **point 31**
 
@@ -278,3 +294,35 @@ void BubbleSort(vecot<int> data)
 
 ​	如果第一次迭代并没有任何交换，可以说明该序列是有序的，所以就不用之后的迭代。也就是说时间复杂度为$\Omega(n)$
 
+#### 课后习题
+
+- 1.7 	输入文字并存盘。将文本文件读取内容存取到`vector<string>`对象中。遍历该对象，将内容显示到`cout`，然后利用泛型算法`sort`对文字进行排序。
+
+  ```c++
+   void FileTest() const {
+            
+                  ifstream file("main.cpp");
+                  vector<string> data;
+                  string str;
+                  while(getline(file,str))
+                  {
+                          sort(str.begin(),str.end());
+                          data.push_back(str);
+                  }
+                  for(auto i : data)  
+                  {
+                          cout << i << endl;
+                  }
+                  
+                  cout << data.size() << endl;
+          
+          }
+  ```
+
+- 1.8 根据用户答错次数显示不同的安慰语句。
+
+  ```c++
+  
+  ```
+
+  
