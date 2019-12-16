@@ -211,7 +211,11 @@ bool FibonacciGame(int position, int &element)
 
 - which is the  simplest sorting algorithm that works by  repeatedly swapping the adjacent element if they are in wrong order. 
 
+<<<<<<< HEAD
   ![]()
+=======
+  ![](<https://github.com/Drafox/C-Learn30Days/blob/master/EssentialC%2B%2B/img/bubble%20_sort.jpg>)
+>>>>>>> 27b64e5e20f4cd1cfc1939f89601a66c59941ef3
 
 - 我们分析上面的图，然后设计程序
 
@@ -292,7 +296,7 @@ void BubbleSort(vecot<int> data)
 
 分析程序：
 
-​	如果第一次迭代并没有任何交换，可以说明该序列是有序的，所以就不用之后的迭代。也就是说时间复杂度为$\Omega(n)$
+​	如果第一次迭代并没有任何交换，可以说明该序列是有序的，所以就不用之后的迭代。也就是说时间复杂度为 $\Omega(n)$
 
 #### 课后习题
 
